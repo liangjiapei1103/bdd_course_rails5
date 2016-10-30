@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -48,9 +48,14 @@ class ArticlesController < ApplicationController
   end
   
   def destroy
-    if @article.destroy
-      flash[:success] = "Article has been deleted"
-      redirect_to articles_path
+    unless @article.user == current_user
+      flash[:alert] = "You can only delete your own article."
+      redirect_to root_path
+    else
+      if @article.destroy
+        flash[:success] = "Article has been deleted"
+        redirect_to articles_path
+      end
     end
   end
   
