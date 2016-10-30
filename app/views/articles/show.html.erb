@@ -67,7 +67,7 @@
   <div class="col-md-10">
     <% if @article.comments.any? %>
       <div id="messages">
-        <% persisted_comments(@comments).each do |comment| %>
+        <% persisted_comments(@comments).reverse_each do |comment| %>
           <div class="comment-body">
             <%= comment.body %>
           </div>
