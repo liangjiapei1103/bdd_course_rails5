@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     if @article.save
-      flash[:success] = "Article has been created"
+      flash[:notice] = "Article has been created"
       redirect_to articles_path
     else
       flash.now[:danger] = "Article has not been created"
@@ -23,6 +23,8 @@ class ArticlesController < ApplicationController
   end
   
   def show
+    @comment = @article.comments.build
+    @comments = @article.comments
   end
   
   def edit

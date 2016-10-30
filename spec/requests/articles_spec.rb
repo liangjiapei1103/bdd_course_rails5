@@ -14,7 +14,7 @@ RSpec.describe "Articles", type: :request do
       
       it "redirect to the signin page" do
         expect(response.status).to eq 302
-        flash_message = "You need to sign in or sign up before continueing."
+        flash_message = "You need to sign in or sign up before continuing."
         expect(flash[:alert]).to eq flash_message
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe "Articles", type: :request do
       
       it "redirect to the signin page" do
         expect(response.status).to eq 302
-        flash_message = "You need to sign in or sign up before continueing."
+        flash_message = "You need to sign in or sign up before continuing."
         expect(flash[:alert]).to eq flash_message
       end
     end
@@ -75,7 +75,7 @@ RSpec.describe "Articles", type: :request do
       end
       
       it "successfully deletes article" do
-        expect(response.status).to eq 200
+        expect(response.status).to eq 302
       end
     end
   end
